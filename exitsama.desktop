@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=End Session
+Comment=Power off, restart, log out, or lock your computer
+Exec=exitsama
+Icon=system-shutdown
+Terminal=false
+Categories=System;Utility;Session;
+NoDisplay=false

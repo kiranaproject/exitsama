@@ -1,0 +1,6 @@
+target/
+*.o
+*.ppu
+*.a
+*.so
+*.log
