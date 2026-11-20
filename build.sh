@@ -29,6 +29,18 @@ case "${TARGET}" in
     shift 1 || true
     pasbuild clean "$@"
     ;;
+  install)
+    PREFIX="${PREFIX:-/usr}"
+    echo "==> Installing exitsama to ${PREFIX}..."
+    install -d "${PREFIX}/bin"
+    install -m 755 target/exitsama "${PREFIX}/bin/exitsama"
+    install -d "${PREFIX}/share/applications"
+    install -m 644 exitsama.desktop "${PREFIX}/share/applications/exitsama.desktop"
+    if [ -f data/10-samarinda-actions.rules ]; then
+      install -d /etc/polkit-1/rules.d
+      install -m 644 data/10-samarinda-actions.rules /etc/polkit-1/rules.d/10-samarinda-actions.rules
+    fi
+    ;;
   compile|*)
     ensure_libft
     echo "==> Compiling exitsama with pasbuild..."

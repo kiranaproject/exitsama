@@ -1,0 +1,20 @@
+// 10-samarinda-actions.rules — Polkit power management rules for Samarinda
+// Copyright (c) 2026 Dio Affriza — SPDX-License-Identifier: MPL-2.0
+
+polkit.addRule(function(action, subject) {
+    if ((action.id == "org.freedesktop.login1.reboot" ||
+         action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
+         action.id == "org.freedesktop.login1.reboot-ignore-inhibit" ||
+         action.id == "org.freedesktop.login1.power-off" ||
+         action.id == "org.freedesktop.login1.power-off-multiple-sessions" ||
+         action.id == "org.freedesktop.login1.power-off-ignore-inhibit" ||
+         action.id == "org.freedesktop.login1.suspend" ||
+         action.id == "org.freedesktop.login1.suspend-multiple-sessions" ||
+         action.id == "org.freedesktop.login1.suspend-ignore-inhibit" ||
+         action.id == "org.freedesktop.login1.hibernate" ||
+         action.id == "org.freedesktop.login1.hibernate-multiple-sessions" ||
+         action.id == "org.freedesktop.login1.hibernate-ignore-inhibit") &&
+        (subject.isInGroup("sudo") || subject.isInGroup("wheel") || subject.local)) {
+        return polkit.Result.YES;
+    }
+});
