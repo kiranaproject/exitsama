@@ -33,3 +33,8 @@ Run test suite:
 ```bash
 ./build.sh test
 ```
+
+## License
+
+`exitsama` is released under the [Mozilla Public License 2.0](LICENSE).  
+Copyright (c) 2026 Dio Affriza.
